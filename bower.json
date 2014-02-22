@@ -14,7 +14,9 @@
     "test",
     "tests"
   ],
+  "dependencies": {},
   "devDependencies": {
     "domready": "~1.0.4"
+    "qunit": "~1.12.0"
   }
 }

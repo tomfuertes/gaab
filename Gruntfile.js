@@ -38,13 +38,8 @@ module.exports = function(grunt) {
         src: ['lib/{,*/}*.js']
       }
     },
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'nyan'
-        },
-        src: ['test/*.js']
-      }
+    qunit: {
+        all: ['test/test.html']
     },
     watch: {
       gruntfile: {
@@ -61,10 +56,10 @@ module.exports = function(grunt) {
   
 
   // Default task.
-  grunt.registerTask('default', ['mochaTest', 'concat', 'uglify']);
+  grunt.registerTask('default', ['qunit', 'concat', 'uglify']);
 
   // Specific tasks
-  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('test', ['qunit']);
   grunt.registerTask('hint', ['jshint']);
 
 };

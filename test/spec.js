@@ -1,17 +1,10 @@
-/**
- * gaab
- *
- *    Library test
- */
+/*global yeoball:false, test:false, ok:false */
 
-'use strict'
+(function () {
+  'use strict';
 
-var assert = require('assert'),
-lib        = require('../lib/gaab');
+  test('Library answer questions with YO!', function () {
+    ok(gaab('Should I tickle this unicorn?') === 'YO!', 'Passed!');
+  });
 
-describe('Basic library test', function() {
-  it('should answer all questions with YO!', function() {
-    var answer = lib.gaab('Should I tickle this unicorn?');
-    assert.equal(answer,'YO!');
-  })
-})
+}());

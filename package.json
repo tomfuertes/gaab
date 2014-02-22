@@ -13,6 +13,6 @@
     "grunt-contrib-concat" : "~0.3.0",
     "grunt-contrib-watch"  : "~0.4.4",
     "matchdep"             : "~0.1.2",
-    "grunt-mocha-test" : "~0.7.0"
+    "grunt-contrib-qunit"    : "~0.3.0"
   }
 }
