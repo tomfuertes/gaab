@@ -2,46 +2,60 @@
 
 [![Build Status](https://secure.travis-ci.org/tomfuertes/uaab.png?branch=master)](http://travis-ci.org/tomfuertes/uaab)
 
-It does this one thing really awesome! boyah!
-
-# OLD README #
-
-# jQuery UAAB
-
 Dead Simple AB Testing with Universal Analytics - a http://twitter.com/fuweekend project by @tomfuertes.
 
 ## Purpose
 
-Make it dead simple for someone to run AB Tests. Don't have ideas for headlines/copy? $5 each below. There aren't really excuses:
+Make it dead simple for someone to run a quick AB Test. Don't have ideas for headlines/copy? $5 each below. There aren't really excuses:
 
 http://fiverr.com/gigs/search?query=write+headlines
 http://fiverr.com/gigs/search?query=converting+copy
 
+## Supports
+
+IE8+ or Whatever version your jQuery supports (window.jQuery must be available at domready).
+
 ## Getting Started
 
-Download the [production version][min] or the [development version][max].
-
-[min]: https://raw.github.com/tomfuertes/jquery-uaab/master/dist/jquery.uaab.min.js
-[max]: https://raw.github.com/tomfuertes/jquery-uaab/master/dist/jquery.uaab.js
+Copy/paste the html from the latest version in [dist](./dist/) somewhere above your universal analytics code.
 
 In your web page:
 
 ```html
-<script src="jquery.js"></script>
-<script src="dist/jquery.uaab.min.js"></script>
+<script id="uaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/uaab">
+  // minified script
+</script>
 <script>
-// $(selector).uaabTest(name, dimension, /*fn: default 'html'*/, experiments)
-$('.jumbotron h1').uaabTest('coolExperiment', 1, 'text', {
-  control: 'I am the default!',
-  spiffy: 'Click the Button!',
-  boring: 'Don\'t click the button!'
-});
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-/**
- * Later in GA
- */
-ga($.uaabTest); // add this
-ga('send', 'pageview'); // just before this!
+ga('create', 'UA-XXXX-Y', 'auto');
+
+gaab(
+  'jumbotron', // experiment name
+  1, // custom dimension (see setup below)
+  [{
+    name: 'control' // name of the variation
+    // selector: strInnerHTML
+    // selector: functionToRunOnDomReady w/ selector as arg
+  }, {
+    name: 'spiffy',
+    '.jumbotron h1': 'I\'m Spiffy',
+    '.jumbotron': function (selector) {
+      $(selector).find('.btn').css('color', 'red')
+    }
+  }, {
+    name: 'boring',
+    '.jumbotron h1': 'I\'m Boring',
+    '.jumbotron': function (selector) {
+      $(selector).find('.btn').removeClass('btn-primary').addClass('btn-default');
+    }
+  }]
+);
+
+ga('send', 'pageview');
 </script>
 ```
 
@@ -55,7 +69,7 @@ _(Coming soon)_
 _(Nothing yet)_
 
 ## Timeline
-09:00 - Start!
+09:00 - Start! `yo jquery`
 09:15 - README Driven Dev
 10:00 - Non-Checked in matching code in src
 10:15 - OT twittering
@@ -66,3 +80,7 @@ _(Nothing yet)_
 11:45 - Cut scope even MOAR!
 11:55 - Decided stopping at 12:30 for lunch.
 12:21 - Scope keeps creeping in my head...
+12:45 - Still working... Removed jQuery dep as the async stuff will confuse the hell out of people.
+12:50 - switched to `yo microlib`
+13:30 - Lots of dev done. Wanting to support _gaq to as a 0.0.2
+13:45 - Finished README dev in new repo
