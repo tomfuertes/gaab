@@ -4,19 +4,14 @@
  *    Library test
  */
 
-define([
-  'intern!bdd',
-  'intern/chai!expect',
-  'lib/gaab',
-], function (bdd, expect, gaab) {
-  with(bdd) {
+'use strict'
 
-    describe('Newschool amd library', function() {
-      it('Library answer questions with YO!', function() {
-        var result = gaab('Should I tickle this unicorn?');
-        expect(result).to.equal('YO!');
-      })
-    })
+var assert = require('assert'),
+lib        = require('../lib/gaab');
 
-  }
+describe('Basic library test', function() {
+  it('should answer all questions with YO!', function() {
+    var answer = lib.gaab('Should I tickle this unicorn?');
+    assert.equal(answer,'YO!');
+  })
 })

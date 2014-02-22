@@ -38,13 +38,12 @@ module.exports = function(grunt) {
         src: ['lib/{,*/}*.js']
       }
     },
-    intern: {
-      library: {
+    mochaTest: {
+      test: {
         options: {
-          // for other available options, see:
-          // https://github.com/theintern/intern/wiki/Using-Intern-with-Grunt#task-options
-          config: 'test/intern'
-        }
+          reporter: 'nyan'
+        },
+        src: ['test/*.js']
       }
     },
     watch: {
@@ -59,13 +58,13 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('intern');
+  
 
   // Default task.
-  grunt.registerTask('default', ['intern', 'concat', 'uglify']);
+  grunt.registerTask('default', ['mochaTest', 'concat', 'uglify']);
 
   // Specific tasks
-  grunt.registerTask('test', ['intern']);
+  grunt.registerTask('test', ['mochaTest']);
   grunt.registerTask('hint', ['jshint']);
 
 };

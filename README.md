@@ -84,3 +84,4 @@ _(Nothing yet)_
 12:50 - switched to `yo microlib`
 13:30 - Lots of dev done. Wanting to support _gaq to as a 0.0.2
 13:45 - Finished README dev in new repo
+14:00 - test framework intern -> mocha
