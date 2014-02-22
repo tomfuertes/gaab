@@ -1,9 +1,20 @@
 {
   "name": "uaab",
   "version": "0.0.0",
-  "dependencies": {},
+  "authors": [
+    "Tom Fuertes <tomfuertes@gmail.com>"
+  ],
+  "description": "Dead Simple Universal Analytics AB Tests",
+  "license": "MIT",
+  "homepage": "https://github.com/tomfuertes/uaab",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "devDependencies": {
-    
+    "domready": "~1.0.4"
   }
 }
-
