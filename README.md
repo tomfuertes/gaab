@@ -1,6 +1,6 @@
-# uaab
+# gaab
 
-[![Build Status](https://secure.travis-ci.org/tomfuertes/uaab.png?branch=master)](http://travis-ci.org/tomfuertes/uaab)
+[![Build Status](https://secure.travis-ci.org/tomfuertes/gaab.png?branch=master)](http://travis-ci.org/tomfuertes/gaab)
 
 Dead Simple AB Testing with Universal Analytics - a http://twitter.com/fuweekend project by @tomfuertes.
 
@@ -22,7 +22,7 @@ Copy/paste the html from the latest version in [dist](./dist/) somewhere above y
 In your web page:
 
 ```html
-<script id="uaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/uaab">
+<script id="gaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/gaab">
   // minified script
 </script>
 <script>

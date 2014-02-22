@@ -1,12 +1,12 @@
 {
-  "name": "uaab",
+  "name": "gaab",
   "version": "0.0.0",
   "authors": [
     "Tom Fuertes <tomfuertes@gmail.com>"
   ],
   "description": "Dead Simple Universal Analytics AB Tests",
   "license": "MIT",
-  "homepage": "https://github.com/tomfuertes/uaab",
+  "homepage": "https://github.com/tomfuertes/gaab",
   "ignore": [
     "**/.*",
     "node_modules",
