@@ -35,7 +35,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-XXXX-Y', 'auto');
+  ga('create', 'UA-20500285-14', 'go.gaab.today');
 
   gaab(
     'jumbotron', // experiment name
@@ -79,7 +79,7 @@
       <div class="jumbotron">
         <h1>Jumbotron heading</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button" onclick="javascript:ga('send', 'event', 'clicked', 'button');">Sign up today</a></p>
       </div>
 
       <div class="row marketing">
