@@ -35,7 +35,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-20500285-14', '.gaab.today');
+  ga('create', 'UA-20500285-14', 'run.gaab.today');
 
   gaab(
     'jumbotron', // experiment name
@@ -71,7 +71,7 @@
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="#" onclick='javascript:!function(a){document.cookie=a+"=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"}("_ga");window.location.reload(true)'>Contact</a></li>
+          <li><a href="#" onclick='javascript:$.removeCookie("_ga", {domain: ".run.gaab.today"});window.location.reload(true)'>Contact</a></li>
         </ul>
         <h3 class="text-muted">Project name</h3>
       </div>
@@ -117,6 +117,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
   </body>
 </html>
