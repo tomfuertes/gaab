@@ -91,3 +91,5 @@ _(Nothing yet)_
 08:45 - COFFEE, Reddit, Twitter
 09:00 - Open code editor. Will focus on getting 0.0.1 built and tests last
 09:30 - Add wrap, bump, and changelog to build
+11:45 - I forgot to take notes, but lots bugfixes & s3cmd
+12:30 - Probably more useful than this project itself :-/ https://gist.github.com/tomfuertes/9175005
