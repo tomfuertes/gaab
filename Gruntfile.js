@@ -14,12 +14,22 @@ module.exports = function (grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['lib/{,*/}*.js'],
-        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
+        src: ['bower_components/domready/ready.js', 'lib/{,*/}*.js'],
+        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js.tmp'
       }
     },
     wrap: {
-      basic: {
+      js: {
+        src: ['<%= concat.dist.dest %>'],
+        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js',
+        options: {
+          wrapper: [
+            "(function (window) {'use strict';",
+            "})(window);"
+          ]
+        }
+      },
+      html: {
         src: ['<%= uglify.dist.dest %>'],
         dest: '<%= uglify.dist.dest %>.html',
         options: {
@@ -30,12 +40,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    clean: {
+      tmp: ['dist/*.tmp']
+    },
     uglify: {
       options: {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
+        src: '<%= wrap.js.dest %>',
         dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.min.js'
       }
     },
@@ -83,7 +96,9 @@ module.exports = function (grunt) {
 
 
   // Default task.
-  grunt.registerTask('default', ['qunit', 'concat', 'uglify', 'wrap']);
+  grunt.registerTask('default', [
+    'qunit', 'concat', 'wrap:js', 'clean:tmp', 'uglify', 'wrap:html'
+  ]);
 
   // Specific tasks
   grunt.registerTask('test', ['qunit']);

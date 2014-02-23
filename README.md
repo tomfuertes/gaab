@@ -17,7 +17,7 @@ IE8+ or Whatever version your jQuery supports (window.jQuery must be available a
 
 ## Getting Started
 
-Copy/paste the html from the latest version in [dist](./dist/) somewhere above your universal analytics code.
+Copy/paste the html from the latest `.min.js.html` version in [dist](./dist/) somewhere above your universal analytics script.
 
 In your web page:
 
