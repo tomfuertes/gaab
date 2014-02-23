@@ -1,4 +1,9 @@
+<a name="0.1.0"></a>
+## 0.1.0 (2014-02-23)
+
+* Bugfix 'undefined' names + initial release
+
 <a name="0.0.1"></a>
 ### 0.0.1 (2014-02-23)
 
-* Initial Release :)
+* Beta Release :)

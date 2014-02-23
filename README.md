@@ -33,7 +33,7 @@ gaab('jumbotron', 1, [
 
 ```html
 <!-- copied/pasted minified script per notes from above! -->
-<script id="gaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/gaab">
+<script id="gaab" data-version="0.1.0" data-docs="https://github.com/tomfuertes/gaab">
 !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){var f=e.get("clientId"),g=parseFloat(f,10)%100/100,h=d[Math.floor(g*d.length)];ga("set","dimension"+c,a+": "+d.name);var i=function(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}};for(var j in h)if(h.hasOwnProperty(j)&&"name"!==j){var k=h[j];b(i(j,k))}})}}(window);
 </script>
 
@@ -44,7 +44,7 @@ gaab('jumbotron', 1, [
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-XXXX-Y', 'auto');
+ga('create', 'UA-20500285-14', 'auto');
 
 gaab(
   'jumbotron', // experiment name
