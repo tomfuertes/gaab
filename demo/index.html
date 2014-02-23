@@ -57,7 +57,7 @@
         name: 'boring',
         '.jumbotron h1': 'I\'m Boring',
         '.jumbotron': function (selector) {
-          $(selector).find('.btn').removeClass('btn-success').addClass('btn-default');
+          $(selector).find('.btn').toggleClass('btn-success btn-default');
         }
       }]
     );

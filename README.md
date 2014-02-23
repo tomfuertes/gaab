@@ -2,9 +2,27 @@
 
 Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter.com/fuweekend) project by [@tomfuertes](https://twitter.com/thisbetom).
 
-## Supports
+```javascript
+// super simple (selector, html)
+gaab('jumbotron', 1, [ // name, dimension, experiments
+  {name: 'control'},
+  {name: 'spiffy', '.jumbotron h1': 'I\'m Spiffy'},
+  {name: 'boring', '.jumbotron h1': 'I\'m Boring'}
+]);
 
-Whatever version jQuery supports (assuming window.jQuery is available at domready). Any browser with querySelectorAll (~IE8+) if not.
+// more complex (selector, function to run on dom ready)
+gaab('jumbotron', 1, [
+  {name: 'control'},
+  {name: 'aggressive', '.jumbotron': function (selector) {
+    $(selector).find('.btn').css('color', 'red');
+  }},
+  {name: 'passive', '.jumbotron': function (selector) {
+    $(selector).find('.btn').toggleClass('btn-success btn-default');
+  }}
+]);
+```
+
+![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
 
 ## Getting Started
 
@@ -45,7 +63,7 @@ gaab(
     name: 'boring',
     '.jumbotron h1': 'I\'m Boring',
     '.jumbotron': function (selector) {
-      $(selector).find('.btn').removeClass('btn-success').addClass('btn-default');
+      $(selector).find('.btn').toggleClass('btn-success btn-default');
     }
   }]
 );
@@ -54,7 +72,9 @@ ga('send', 'pageview'); // all calls to gaab must be made before this!
 </script>
 ```
 
-![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
+## Supports
+
+Whatever version jQuery supports (assuming window.jQuery is available at domready). Any browser with querySelectorAll (~IE8+) if not.
 
 ##### Timeline
 * **09:00-** Start! `yo jquery`
