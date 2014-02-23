@@ -22,9 +22,8 @@ Copy/paste the html from the latest version in [dist](./dist/) somewhere above y
 In your web page:
 
 ```html
-<script id="gaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/gaab">
-  // minified script
-</script>
+<script id="gaab" data-version="0.0.0" data-docs="https://github.com/tomfuertes/gaab">
+!function(a,b){"use strict";a[b]=function(a,b,c){ga(function(d){var e=d.get("clientId"),f=parseFloat(e,10)%100/100,g=c[Math.floor(f*c.length)];ga("set","dimension"+b,g[a]);for(var h in g)if(g.hasOwnProperty(h)&&"name"!==h){var i=g[h];"function"==typeof i?i(h):"undefined"!=typeof jQuery?jQuery(h).html(i):document.querySelectorAll(h).innerHTML=i}})}}(window,"gaab");</script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
