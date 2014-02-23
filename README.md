@@ -56,9 +56,6 @@ ga('send', 'pageview'); // all calls to gaab must be made before this!
 
 ![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
 
-## Theory
-
-
 ##### Timeline
 * **09:00-** Start! `yo jquery`
 * **09:15-** README Driven Dev
