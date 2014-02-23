@@ -88,5 +88,5 @@ module.exports = function (grunt) {
   // Specific tasks
   grunt.registerTask('test', ['qunit']);
   grunt.registerTask('hint', ['jshint']);
-g
+
 };
