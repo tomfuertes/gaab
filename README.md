@@ -85,3 +85,7 @@ _(Nothing yet)_
 13:30 - Lots of dev done. Wanting to support _gaq to as a 0.0.2
 13:45 - Finished README dev in new repo
 14:00 - test framework intern -> mocha
+14:15 - Out to lunch! Pickup on tests
+08:45 - COFFEE, Reddit, Twitter
+09:00 - Open code editor. Will focus on getting 0.0.1 built and tests last
+09:30 - Add wrap, bump, and changelog to build

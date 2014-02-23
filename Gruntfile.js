@@ -1,5 +1,6 @@
 /*global module:false*/
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+  'use strict';
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -7,20 +8,26 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
     concat: {
       options: {
-        banner: '<%= banner %>',
         stripBanners: true
       },
       dist: {
         src: ['lib/{,*/}*.js'],
         dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
+      }
+    },
+    wrap: {
+      basic: {
+        src: ['<%= uglify.dist.dest %>'],
+        dest: '<%= uglify.dist.dest %>.html',
+        options: {
+          wrapper: [
+            '<script id="gaab" data-version="<%= pkg.version %>" data-docs="https://github.com/tomfuertes/gaab">',
+            '</script>'
+          ]
+        }
       }
     },
     uglify: {
@@ -39,7 +46,7 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-        all: ['test/test.html']
+      all: ['test/test.html']
     },
     watch: {
       gruntfile: {
@@ -50,16 +57,36 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
       }
+    },
+    bump: {
+      options: {
+        files: ['package.json', 'bower.json'],
+        updateConfigs: ['pkg'],
+        commit: true,
+        commitMessage: 'Release v%VERSION%',
+        commitFiles: ['-a'], // '-a' for all files
+        createTag: true,
+        tagName: 'v%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: false,
+        // pushTo: 'upstream',
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
+      }
+    },
+    changelog: {
+      options: {
+        // Task-specific options go here.
+      }
     }
   });
 
-  
+
 
   // Default task.
-  grunt.registerTask('default', ['qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['qunit', 'concat', 'uglify', 'wrap']);
 
   // Specific tasks
   grunt.registerTask('test', ['qunit']);
   grunt.registerTask('hint', ['jshint']);
-
+g
 };
