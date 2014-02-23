@@ -26,41 +26,45 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script id="gaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/gaab">
-!function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){var f=e.get("clientId"),g=parseFloat(f,10)%100/100,h=d[Math.floor(g*d.length)];ga("set","dimension"+c,a+": "+d.name);var i=function(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}};for(var j in h)if(h.hasOwnProperty(j)&&"name"!==j){var k=h[j];b(i(j,k))}})}}(window);
-</script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <!-- copied/pasted minified script per notes from above! -->
+    <script id="gaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/gaab">
+    !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){var f=e.get("clientId"),g=parseFloat(f,10)%100/100,h=d[Math.floor(g*d.length)];ga("set","dimension"+c,a+": "+d.name);var i=function(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}};for(var j in h)if(h.hasOwnProperty(j)&&"name"!==j){var k=h[j];b(i(j,k))}})}}(window);
+    </script>
 
-  ga('create', 'UA-20500285-14', 'run.gaab.today');
+    <!-- universal analytics w/ gaab before `ga('send', 'pageview');`! -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  gaab(
-    'jumbotron', // experiment name
-    1, // custom dimension (see setup below)
-    [{
-      name: 'control' // name of the variation
-      // selector: strInnerHTML
-      // selector: functionToRunOnDomReady w/ selector as arg
-    }, {
-      name: 'spiffy',
-      '.jumbotron h1': 'I\'m Spiffy',
-      '.jumbotron': function (selector) {
-        $(selector).find('.btn').css('color', 'red')
-      }
-    }, {
-      name: 'boring',
-      '.jumbotron h1': 'I\'m Boring',
-      '.jumbotron': function (selector) {
-        $(selector).find('.btn').removeClass('btn-primary').addClass('btn-default');
-      }
-    }]
-  );
+    ga('create', 'UA-XXXX-Y', 'auto');
 
-  ga('send', 'pageview');
-  </script>
+    gaab(
+      'jumbotron', // experiment name
+      1, // custom dimension (see setup below)
+      [{
+        name: 'control' // name of the variation
+        // selector: str (runs ~ $(selector).html(str))
+        // selector: fn  (runs fn on domready w/ selector as arg)
+      }, {
+        name: 'spiffy',
+        '.jumbotron h1': 'I\'m Spiffy',
+        '.jumbotron': function (selector) {
+          $(selector).find('.btn').css('color', 'red')
+        }
+      }, {
+        name: 'boring',
+        '.jumbotron h1': 'I\'m Boring',
+        '.jumbotron': function (selector) {
+          $(selector).find('.btn').removeClass('btn-success').addClass('btn-default');
+        }
+      }]
+    );
+
+    ga('send', 'pageview'); // all calls to gaab must be made before this!
+    </script>
+
 
   </head>
 

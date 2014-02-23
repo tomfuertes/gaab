@@ -1,9 +1,5 @@
 # gaab
 
-<!--
-[![Build Status](https://secure.travis-ci.org/tomfuertes/gaab.png?branch=master)](http://travis-ci.org/tomfuertes/gaab)
- -->
-
 Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter.com/fuweekend) project by [@tomfuertes](https://twitter.com/thisbetom).
 
 ## Supports
@@ -12,9 +8,10 @@ Whatever version jQuery supports (assuming window.jQuery is available at domread
 
 ## Getting Started
 
-Copy/paste the html from the latest `.min.js.html` version in [dist](./dist/) somewhere **above** your universal analytics script.
-
-In your web page:
+1. Setup a [Universal Analytics](https://support.google.com/analytics/answer/2817075?hl=en) account (you can upgrade your old GA or create a new one) if you haven't already.
+2. Create a [New Custom Dimension](https://support.google.com/analytics/answer/2709829?hl=en) called `Testing` with a `user` level scope.
+3. Copy/paste the html from the latest `.min.js.html` version in [dist](./dist/) somewhere **above** your universal analytics script.
+4. Call `gaab(experimentName, dimension, {/*experiments*/})` to start testing.
 
 ```html
 <!-- copied/pasted minified script per notes from above! -->
@@ -36,8 +33,8 @@ gaab(
   1, // custom dimension (see setup below)
   [{
     name: 'control' // name of the variation
-    // selector: strInnerHTML
-    // selector: functionToRunOnDomReady w/ selector as arg
+    // selector: str (runs ~ $(selector).html(str))
+    // selector: fn  (runs fn on domready w/ selector as arg)
   }, {
     name: 'spiffy',
     '.jumbotron h1': 'I\'m Spiffy',
@@ -48,7 +45,7 @@ gaab(
     name: 'boring',
     '.jumbotron h1': 'I\'m Boring',
     '.jumbotron': function (selector) {
-      $(selector).find('.btn').removeClass('btn-primary').addClass('btn-default');
+      $(selector).find('.btn').removeClass('btn-success').addClass('btn-default');
     }
   }]
 );
@@ -56,6 +53,11 @@ gaab(
 ga('send', 'pageview'); // all calls to gaab must be made before this!
 </script>
 ```
+
+![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
+
+## Theory
+
 
 ##### Timeline
 * **09:00-** Start! `yo jquery`
@@ -80,3 +82,5 @@ ga('send', 'pageview'); // all calls to gaab must be made before this!
 * **09:30-** Add wrap, bump, and changelog to build
 * **11:45-** I forgot to take notes, but lots bugfixes & s3cmd
 * **12:30-** Probably more useful than this project itself :-/ https://gist.github.com/tomfuertes/9175005
+* **04:00-** 3 Hour nap!
+* **04:30-** Create twitter account and finalize README
