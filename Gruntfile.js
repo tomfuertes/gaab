@@ -77,12 +77,7 @@ module.exports = function (grunt) {
         updateConfigs: ['pkg'],
         commit: true,
         commitMessage: 'Release v%VERSION%',
-        commitFiles: [
-          'package.json', 'bower.json',
-          '<%= wrap.js.dest %>',
-          '<%= uglify.dist.dest %>',
-          '<%= wrap.html.dest %>'
-        ], // '-a' for all files
+        commitFiles: ['-a'], // '-a' for all files
         createTag: true,
         tagName: 'v%VERSION%',
         tagMessage: 'Version %VERSION%',
@@ -108,5 +103,6 @@ module.exports = function (grunt) {
   // Specific tasks
   grunt.registerTask('test', ['qunit']);
   grunt.registerTask('hint', ['jshint']);
+  grunt.registerTask('bab', ['bump-only', 'default', 'changelog']);
 
 };

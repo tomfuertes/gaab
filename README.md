@@ -19,13 +19,14 @@ IE8+ or Whatever version your jQuery supports (window.jQuery must be available a
 
 ## Getting Started
 
-Copy/paste the html from the latest `.min.js.html` version in [dist](./dist/) somewhere above your universal analytics script.
+Copy/paste the html from the latest `.min.js.html` version in [dist](./dist/) somewhere **above** your universal analytics script.
 
 In your web page:
 
 ```html
-<script id="gaab" data-version="0.0.0" data-docs="https://github.com/tomfuertes/gaab">
-!function(a,b){"use strict";a[b]=function(a,b,c){ga(function(d){var e=d.get("clientId"),f=parseFloat(e,10)%100/100,g=c[Math.floor(f*c.length)];ga("set","dimension"+b,g[a]);for(var h in g)if(g.hasOwnProperty(h)&&"name"!==h){var i=g[h];"function"==typeof i?i(h):"undefined"!=typeof jQuery?jQuery(h).html(i):document.querySelectorAll(h).innerHTML=i}})}}(window,"gaab");</script>
+<script id="gaab" data-version="0.0.1" data-docs="https://github.com/tomfuertes/gaab">
+!function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){var f=e.get("clientId"),g=parseFloat(f,10)%100/100,h=d[Math.floor(g*d.length)];ga("set","dimension"+c,a+": "+d.name);var i=function(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}};for(var j in h)if(h.hasOwnProperty(j)&&"name"!==j){var k=h[j];b(i(j,k))}})}}(window);
+</script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
