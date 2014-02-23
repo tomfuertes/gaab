@@ -1,8 +1,10 @@
 # gaab
 
+<!--
 [![Build Status](https://secure.travis-ci.org/tomfuertes/gaab.png?branch=master)](http://travis-ci.org/tomfuertes/gaab)
+ -->
 
-Dead Simple AB Testing with Universal Analytics - a http://twitter.com/fuweekend project by @tomfuertes.
+Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter.com/fuweekend) project by [@tomfuertes](https://twitter.com/thisbetom).
 
 ## Purpose
 
