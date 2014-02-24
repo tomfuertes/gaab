@@ -4,25 +4,31 @@ Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter
 
 ```javascript
 // super simple (selector, html)
+ga('create', 'UA-YYYYYY-X', 'auto');
 gaab('jumbotron', 1, [ // name, dimension, experiments
   {name: 'control'},
   {name: 'spiffy', '.jumbotron h1': 'I\'m Spiffy'},
   {name: 'boring', '.jumbotron h1': 'I\'m Boring'}
 ]);
+ga('send', 'pageview');
 
 // more complex (selector, function to run on dom ready)
+ga('create', 'UA-YYYYYY-X', 'auto');
 gaab('buttons', 1, [
   {name: 'control'},
-  {name: 'aggressive', '.jumbotron': function (selector) {
-    $(selector).find('.btn').css('color', 'red');
-  }},
-  {name: 'passive', '.jumbotron': function (selector) {
-    $(selector).find('.btn').toggleClass('btn-success btn-default');
-  }}
+  {
+    name: 'aggressive',
+    '.jumbotron': function (selector) {
+      $(selector).find('.btn').css('color', 'red');
+    }
+  }
 ]);
+ga('send', 'pageview');
 ```
 
 ![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
+
+**[Demo Page](http://run.gaab.today)**
 
 ## Getting Started
 
@@ -33,8 +39,8 @@ gaab('buttons', 1, [
 
 ```html
 <!-- copied/pasted minified script per notes from above! -->
-<script id="gaab" data-version="0.1.0" data-docs="https://github.com/tomfuertes/gaab">
-!function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){var f=e.get("clientId"),g=parseFloat(f,10)%100/100,h=d[Math.floor(g*d.length)];ga("set","dimension"+c,a+": "+d.name);var i=function(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}};for(var j in h)if(h.hasOwnProperty(j)&&"name"!==j){var k=h[j];b(i(j,k))}})}}(window);
+<script id="gaab" data-version="0.1.1" data-docs="https://github.com/tomfuertes/gaab">
+!function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){function f(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}}var g=e.get("clientId"),h=parseFloat(g,10)%100/100,i=d[Math.floor(h*d.length)];ga("set","dimension"+c,a+": "+i.name);for(var j in i)"name"!==j&&i.hasOwnProperty(j)&&b(f(j,i[j]))})}}(window);
 </script>
 
 <!-- universal analytics w/ gaab before `ga('send', 'pageview');`! -->

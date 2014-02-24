@@ -21,8 +21,8 @@
     <![endif]-->
 
     <!-- copied/pasted minified script per notes from above! -->
-    <script id="gaab" data-version="0.1.0" data-docs="https://github.com/tomfuertes/gaab">
-    !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){var f=e.get("clientId"),g=parseFloat(f,10)%100/100,h=d[Math.floor(g*d.length)];ga("set","dimension"+c,a+": "+d.name);var i=function(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}};for(var j in h)if(h.hasOwnProperty(j)&&"name"!==j){var k=h[j];b(i(j,k))}})}}(window);
+    <script id="gaab" data-version="0.1.1" data-docs="https://github.com/tomfuertes/gaab">
+    !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){function f(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}}var g=e.get("clientId"),h=parseFloat(g,10)%100/100,i=d[Math.floor(h*d.length)];ga("set","dimension"+c,a+": "+i.name);for(var j in i)"name"!==j&&i.hasOwnProperty(j)&&b(f(j,i[j]))})}}(window);
     </script>
 
     <!-- universal analytics w/ gaab before `ga('send', 'pageview');`! -->
@@ -32,7 +32,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-20500285-14', 'auto');
+    ga('create', 'UA-20500285-14', 'none');
 
     gaab(
       'jumbotron', // experiment name
@@ -67,9 +67,7 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#" onclick='javascript:$.removeCookie("_ga", {domain: ".gaab.today"});window.location.reload(true)'>Contact</a></li>
+          <li><a href="#" onclick="javascript:$.removeCookie('_ga');window.location.reload(true)">Clear Cookies &amp; Refresh Page</a></li>
         </ul>
         <h3 class="text-muted">Project name</h3>
       </div>
