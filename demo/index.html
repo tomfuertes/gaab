@@ -21,8 +21,8 @@
     <![endif]-->
 
     <!-- copied/pasted minified script per notes from above! -->
-    <script id="gaab" data-version="0.1.1" data-docs="https://github.com/tomfuertes/gaab">
-    !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){function f(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}}var g=e.get("clientId"),h=parseFloat(g,10)%100/100,i=d[Math.floor(h*d.length)];ga("set","dimension"+c,a+": "+i.name);for(var j in i)"name"!==j&&i.hasOwnProperty(j)&&b(f(j,i[j]))})}}(window);
+    <script id="gaab" data-version="0.2.0" data-docs="https://github.com/tomfuertes/gaab">
+    !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){function f(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}}var g=e.get("clientId"),h=parseFloat(g,10)%100/100,i=d[Math.floor(h*d.length)];ga("set","dimension"+c,a+": "+i.variation);for(var j in i)"variation"!==j&&i.hasOwnProperty(j)&&b(f(j,i[j]))})}}(window);
     </script>
 
     <!-- universal analytics w/ gaab before `ga('send', 'pageview');`! -->
@@ -35,23 +35,23 @@
     ga('create', 'UA-20500285-14', 'none');
 
     gaab(
-      'jumbotron', // experiment name
+      'jumbotron', // experiment name shown in reporting
       1, // custom dimension (see setup below)
       [{
-        name: 'control' // name of the variation
+        variation: 'control' // name of the variation
         // selector: str (runs ~ $(selector).html(str))
         // selector: fn  (runs fn on domready w/ selector as arg)
       }, {
-        name: 'spiffy',
-        '.jumbotron h1': 'I\'m Spiffy',
-        '.jumbotron': function (selector) {
-          $(selector).find('.btn').css('color', 'red')
+        variation: 'spiffy',
+        'h1': 'I\'m Spiffy',
+        '.jumbotron .btn': function (selector) {
+          $(selector).css('color', 'red')
         }
       }, {
-        name: 'boring',
-        '.jumbotron h1': 'I\'m Boring',
-        '.jumbotron': function (selector) {
-          $(selector).find('.btn').toggleClass('btn-success btn-default');
+        variation: 'boring',
+        'h1': 'I\'m Boring',
+        '.jumbotron .btn': function (selector) {
+          $(selector).toggleClass('btn-success btn-default');
         }
       }]
     );

@@ -1,3 +1,8 @@
+<a name="0.2.0"></a>
+## 0.2.0 (2014-02-23)
+
+* Breaking API Change - Test Objects now require `variation` key instead of `name`.
+
 <a name="0.1.1"></a>
 ### 0.1.1 (2014-02-23)
 
