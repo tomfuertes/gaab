@@ -28,27 +28,21 @@ gaab('Calls to Action', 1, [
   { variation: 'angry-bull',
     h1: 'Angry!!!',
     '.jumbotron .btn': function (s) {
-      $(s).css('color', 'red');
-    }
+      $(s).css('color', 'red'); }
   },
   { variation: 'green-frog',
     '.jumbotron .btn': function (s) {
-      $(s).css('color', 'red');
-    },
+      $(s).css('color', 'red'); },
     '.footer': function (s) {
-      $(s).remove();
-    },
+      $(s).remove(); },
     'h3': function (s) {
-      $(s).css('color', 'green');
-    }
+      $(s).css('color', 'green'); }
   },
   { variation: 'total-chaos',
     '[placeholder]': function (s) {
-      $(s).removeAttr('placeholder', null);
-    },
+      $(s).removeAttr('placeholder', null); },
     'label': function (s) {
-      $(s).remove();
-    }
+      $(s).remove(); }
   }
 ]);
 ```
