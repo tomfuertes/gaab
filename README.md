@@ -11,7 +11,7 @@ gaab('jumbotron', 1, [ // name, dimension, experiments
 ]);
 
 // more complex (selector, function to run on dom ready)
-gaab('jumbotron', 1, [
+gaab('buttons', 1, [
   {name: 'control'},
   {name: 'aggressive', '.jumbotron': function (selector) {
     $(selector).find('.btn').css('color', 'red');
@@ -46,27 +46,12 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-20500285-14', 'auto');
 
-gaab(
-  'jumbotron', // experiment name
-  1, // custom dimension (see setup below)
-  [{
-    name: 'control' // name of the variation
-    // selector: str (runs ~ $(selector).html(str))
-    // selector: fn  (runs fn on domready w/ selector as arg)
-  }, {
-    name: 'spiffy',
-    '.jumbotron h1': 'I\'m Spiffy',
-    '.jumbotron': function (selector) {
-      $(selector).find('.btn').css('color', 'red')
-    }
-  }, {
-    name: 'boring',
-    '.jumbotron h1': 'I\'m Boring',
-    '.jumbotron': function (selector) {
-      $(selector).find('.btn').toggleClass('btn-success btn-default');
-    }
-  }]
-);
+// super simple (selector, html)
+gaab('jumbotron', 1, [ // name, dimension, experiments
+  {name: 'control'},
+  {name: 'spiffy', '.jumbotron h1': 'I\'m Spiffy'},
+  {name: 'boring', '.jumbotron h1': 'I\'m Boring'}
+]);
 
 ga('send', 'pageview'); // all calls to gaab must be made before this!
 </script>
@@ -75,29 +60,3 @@ ga('send', 'pageview'); // all calls to gaab must be made before this!
 ## Supports
 
 Whatever version jQuery supports (assuming window.jQuery is available at domready). Any browser with querySelectorAll (~IE8+) if not.
-
-##### Timeline
-* **09:00-** Start! `yo jquery`
-* **09:15-** README Driven Dev
-* **10:00-** Non-Checked in matching code in src
-* **10:15-** OT twittering
-* **10:45-** Trying tests + file generator-jquery bug https://github.com/yeoman/generator-jquery/issues/17
-* **11:00-** Switch to TDD + update README w/ correct git name
-* **11:15-** Cut scope - supposed so be dead simple AB testing
-* **11:20-** Backup run amock code into branch `complex`
-* **11:45-** Cut scope even MOAR!
-* **11:55-** Decided stopping at 12:30 for lunch.
-* **12:21-** Scope keeps creeping in my head...
-* **12:45-** Still working... Removed jQuery dep as the async stuff will confuse the hell out of people.
-* **12:50-** switched to `yo microlib`
-* **13:30-** Lots of dev done. Wanting to support _gaq to as a 0.0.2
-* **13:45-** Finished README dev in new repo
-* **14:00-** test framework intern -> mocha
-* **14:15-** Out to lunch! Pickup on tests
-* **08:45-** COFFEE, Reddit, Twitter
-* **09:00-** Open code editor. Will focus on getting 0.0.1 built and tests last
-* **09:30-** Add wrap, bump, and changelog to build
-* **11:45-** I forgot to take notes, but lots bugfixes & s3cmd
-* **12:30-** Probably more useful than this project itself :-/ https://gist.github.com/tomfuertes/9175005
-* **04:00-** 3 Hour nap!
-* **04:30-** Create twitter account and finalize README
