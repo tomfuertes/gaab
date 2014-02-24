@@ -3,27 +3,54 @@
 Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter.com/fuweekend) project by [@tomfuertes](https://twitter.com/thisbetom).
 
 ```javascript
-// super simple (selector, html)
-ga('create', 'UA-YYYYYY-X', 'auto');
-gaab('jumbotron', 1, [ // name, dimension, experiments
-  {name: 'control'},
-  {name: 'spiffy', '.jumbotron h1': 'I\'m Spiffy'},
-  {name: 'boring', '.jumbotron h1': 'I\'m Boring'}
-]);
-ga('send', 'pageview');
+// super simple text (selector, string of html)
+gaab('heading', 1, [ // name, dimension, experiments
+  { name: 'control' },
+  { name: 'spiffy',
+    h1: 'Spiffy!!!' //~> $('h1').html('Spiffy!!!')
+}]);
 
-// more complex (selector, function to run on dom ready)
-ga('create', 'UA-YYYYYY-X', 'auto');
+// super simple function (selector, function)
 gaab('buttons', 1, [
-  {name: 'control'},
-  {
-    name: 'aggressive',
-    '.jumbotron': function (selector) {
-      $(selector).find('.btn').css('color', 'red');
+  { name: 'control' },
+  { name: 'angry-bull',
+    '.jumbotron .btn': function (selector) {
+      $(selector).css('color', 'red');
     }
   }
 ]);
-ga('send', 'pageview');
+
+// more complex (selector, text/function, multiple...)
+// Here we'll run 4 tests using a mix of simple innerHTML replacement
+// And multiple selector/styling/color changes in each variation
+gaab('Calls to Action', 1, [
+  { name: 'control' },
+  { name: 'angry-bull',
+    h1: 'Angry!!!',
+    '.jumbotron .btn': function (s) {
+      $(s).css('color', 'red');
+    }
+  },
+  { name: 'green-frog',
+    '.jumbotron .btn': function (s) {
+      $(s).css('color', 'red');
+    },
+    '.footer': function (s) {
+      $(s).remove();
+    },
+    'h3': function (s) {
+      $(s).css('color', 'green');
+    }
+  },
+  { name: 'total-chaos',
+    '[placeholder]': function (s) {
+      $(s).removeAttr('placeholder', null);
+    },
+    'label': function (s) {
+      $(s).remove();
+    }
+  }
+]);
 ```
 
 ![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
@@ -50,7 +77,7 @@ ga('send', 'pageview');
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-20500285-14', 'auto');
+ga('create', 'UA-YYYYYY-X', 'auto');
 
 // super simple (selector, html)
 gaab('jumbotron', 1, [ // name, dimension, experiments
