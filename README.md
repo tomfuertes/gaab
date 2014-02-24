@@ -3,15 +3,23 @@
 Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter.com/fuweekend) project by [@tomfuertes](https://twitter.com/thisbetom).
 
 ```javascript
-// super simple text (selector, string of html)
-gaab('heading', 1, [ // testName, dimension, experimentsArray
+gaab('headlines', 1, [
   { variation: 'control' },
   { variation: 'spiffy',
-    'h1': 'Spiffy!!!' } //~> $('h1').html('Spiffy!!!')
+    'h1': 'Spiffy :)' } //~ $('h1').html('Spiffy :)')
+  { variation: 'boring',
+    'h1': 'Boring :(' } //~ $('h1').html('Boring :(')
 ]);
+```
 
-// super simple function (selector, function)
-gaab('buttons', 1, [
+![GAAB Test Gif Demo](http://i.imgur.com/pwTb3OH.gif)
+
+![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
+
+## More Advanced
+
+```javascript
+gaab('buttons', 1, [ // testName, dimension, experimentsArray
   { variation: 'control' },
   { variation: 'killer',
     '.jumbotron .btn': function (selector) {
@@ -46,10 +54,6 @@ gaab('Calls to Action', 1, [
 ]);
 ```
 
-![GAAB Reporting Demo](http://i.imgur.com/pdLD9cW.gif)
-
-**[Demo Page](http://run.gaab.today)**
-
 ## Getting Started
 
 1. Setup a [Universal Analytics](https://support.google.com/analytics/answer/2817075?hl=en) account (you can upgrade your old GA or create a new one) if you haven't already.
@@ -74,9 +78,11 @@ ga('create', 'UA-YYYYYY-X', 'auto');
 
 // testName, dimension, experimentsArray
 gaab('headlines', 1, [
-  { variation: 'control'},
-  { variation: 'spiffy', 'h1': 'Spiffy :)'},
-  { variation: 'boring', 'h1': 'Boring :('}
+  { variation: 'control' },
+  { variation: 'spiffy',
+    'h1': 'Spiffy :)' } //~ $('h1').html('Spiffy :)')
+  { variation: 'boring',
+    'h1': 'Boring :(' } //~ $('h1').html('Boring :(')
 ]);
 
 ga('send', 'pageview'); // all calls to gaab must be made before this!
