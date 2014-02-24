@@ -13,10 +13,9 @@ gaab('heading', 1, [ // testName, dimension, experimentsArray
 // super simple function (selector, function)
 gaab('buttons', 1, [
   { variation: 'control' },
-  { variation: 'angry-bull',
+  { variation: 'killer',
     '.jumbotron .btn': function (selector) {
-      $(selector).css('color', 'red');
-    }
+      $(selector).css('color', 'red'); }
   }
 ]);
 
@@ -56,7 +55,7 @@ gaab('Calls to Action', 1, [
 1. Setup a [Universal Analytics](https://support.google.com/analytics/answer/2817075?hl=en) account (you can upgrade your old GA or create a new one) if you haven't already.
 2. Create a [New Custom Dimension](https://support.google.com/analytics/answer/2709829?hl=en) called `Testing` with a `user` level scope.
 3. Copy/paste the html from the latest `.min.js.html` version in [dist](./dist/) somewhere **above** your universal analytics script.
-4. Call `gaab(experimentName, dimension, {/*experiments*/})` to start testing.
+4. Call `gaab(experimentName, dimension, [/*experiments*/])` to start testing.
 
 ```html
 <!-- copied/pasted minified script per notes from above! -->
@@ -64,7 +63,7 @@ gaab('Calls to Action', 1, [
 !function(a){"use strict";var b=function(){var a,b=[],c=document,d="DOMContentLoaded",e=/^loaded|^i|^c/.test(c.readyState);return e||c.addEventListener(d,a=function(){for(c.removeEventListener(d,a),e=1;a=b.shift();)a()}),function(a){e?a():b.push(a)}}();a.gaab=function(a,c,d){ga(function(e){function f(a,b){return function(){"function"==typeof b?b(a):"undefined"!=typeof jQuery?jQuery(a).html(b):document.querySelectorAll(a).innerHTML=b}}var g=e.get("clientId"),h=parseFloat(g,10)%100/100,i=d[Math.floor(h*d.length)];ga("set","dimension"+c,a+": "+i.variation);for(var j in i)"variation"!==j&&i.hasOwnProperty(j)&&b(f(j,i[j]))})}}(window);
 </script>
 
-<!-- universal analytics w/ gaab before `ga('send', 'pageview');`! -->
+<!-- universal analytics boilerplate w/ gaab -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -73,8 +72,8 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-YYYYYY-X', 'auto');
 
-// super simple (selector, html)
-gaab('jumbotron', 1, [ // testName, dimension, experimentsArray
+// testName, dimension, experimentsArray
+gaab('jumbotron', 1, [
   {variation: 'control'},
   {variation: 'spiffy', 'h1': 'I\'m Spiffy'},
   {variation: 'boring', 'h1': 'I\'m Boring'}
