@@ -34,27 +34,11 @@
 
     ga('create', 'UA-20500285-14', 'none');
 
-    gaab(
-      'jumbotron', // experiment name shown in reporting
-      1, // custom dimension (see setup below)
-      [{
-        variation: 'control' // name of the variation
-        // selector: str (runs ~ $(selector).html(str))
-        // selector: fn  (runs fn on domready w/ selector as arg)
-      }, {
-        variation: 'spiffy',
-        'h1': 'I\'m Spiffy',
-        '.jumbotron .btn': function (selector) {
-          $(selector).css('color', 'red')
-        }
-      }, {
-        variation: 'boring',
-        'h1': 'I\'m Boring',
-        '.jumbotron .btn': function (selector) {
-          $(selector).toggleClass('btn-success btn-default');
-        }
-      }]
-    );
+    gaab('headlines', 1, [
+      { variation: 'control'},
+      { variation: 'spiffy', 'h1': 'Spiffy :)'},
+      { variation: 'boring', 'h1': 'Boring :('}
+    ]);
 
     ga('send', 'pageview'); // all calls to gaab must be made before this!
     </script>
