@@ -7,7 +7,7 @@ Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter
 gaab('heading', 1, [ // testName, dimension, experimentsArray
   { variation: 'control' },
   { variation: 'spiffy',
-    h1: 'Spiffy!!!' } //~> $('h1').html('Spiffy!!!')
+    'h1': 'Spiffy!!!' } //~> $('h1').html('Spiffy!!!')
 ]);
 
 // super simple function (selector, function)
@@ -25,7 +25,7 @@ gaab('buttons', 1, [
 gaab('Calls to Action', 1, [
   { variation: 'control' },
   { variation: 'angry-bull',
-    h1: 'Angry!!!',
+    'h1': 'Angry!!!',
     '.jumbotron .btn': function (s) {
       $(s).css('color', 'red'); }
   },
@@ -73,10 +73,10 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-YYYYYY-X', 'auto');
 
 // testName, dimension, experimentsArray
-gaab('jumbotron', 1, [
-  {variation: 'control'},
-  {variation: 'spiffy', 'h1': 'I\'m Spiffy'},
-  {variation: 'boring', 'h1': 'I\'m Boring'}
+gaab('headlines', 1, [
+  { variation: 'control'},
+  { variation: 'spiffy', 'h1': 'Spiffy :)'},
+  { variation: 'boring', 'h1': 'Boring :('}
 ]);
 
 ga('send', 'pageview'); // all calls to gaab must be made before this!
