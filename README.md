@@ -3,7 +3,7 @@
 Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter.com/fuweekend) project by [@tomfuertes](https://twitter.com/thisbetom).
 
 ```javascript
-gaab('headlines', 1, [
+gaab('jumbotron', 1, [
   { variation: 'control' },
   { variation: 'spiffy',
     'h1': 'Spiffy :)' } //~ $('h1').html('Spiffy :)')
@@ -30,7 +30,7 @@ gaab('buttons', 1, [ // testName, dimension, experimentsArray
 // more complex (selector, text/function, multiple...)
 // Here we'll run 4 tests using a mix of simple innerHTML replacement
 // And multiple selector/styling/color changes in each variation
-gaab('Calls to Action', 1, [
+gaab('animals', 1, [
   { variation: 'control' },
   { variation: 'angry-bull',
     'h1': 'Angry!!!',
@@ -77,7 +77,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-YYYYYY-X', 'auto');
 
 // testName, dimension, experimentsArray
-gaab('headlines', 1, [
+gaab('jumbotron', 1, [
   { variation: 'control' },
   { variation: 'spiffy',
     'h1': 'Spiffy :)' } //~ $('h1').html('Spiffy :)')
