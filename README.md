@@ -6,7 +6,7 @@ Dead Simple AB Testing with Universal Analytics - a [@FUweekend](https://twitter
 gaab('jumbotron', 1, [
   { variation: 'control' },
   { variation: 'spiffy',
-    'h1': 'Spiffy :)' } //~ $('h1').html('Spiffy :)')
+    'h1': 'Spiffy :)' }, //~ $('h1').html('Spiffy :)')
   { variation: 'boring',
     'h1': 'Boring :(' } //~ $('h1').html('Boring :(')
 ]);
